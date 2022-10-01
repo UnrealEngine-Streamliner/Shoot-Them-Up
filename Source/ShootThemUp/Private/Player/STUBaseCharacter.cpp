@@ -93,7 +93,8 @@ float ASTUBaseCharacter::GetMovementDirection() const
 	const auto VelocityNormal = GetVelocity().GetSafeNormal();
 	const auto AngleBetween = FMath::Acos(FVector::DotProduct(GetActorForwardVector(), VelocityNormal));
 	const auto CrossProduct = FVector::CrossProduct(GetActorForwardVector(), VelocityNormal);
-	return FMath::RadiansToDegrees(AngleBetween) * FMath::Sign(CrossProduct.Z);
+	const auto MovementDirection = FMath::RadiansToDegrees(AngleBetween) * FMath::Sign(CrossProduct.Z);
+	return MovementDirection;
 }
 
 
